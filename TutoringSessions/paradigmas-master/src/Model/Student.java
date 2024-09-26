@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import Model.TeacherAppointment;
 
 public class Student extends User {
     private String studentID;
@@ -34,6 +35,12 @@ public class Student extends User {
     }
 
     public void addTeacherTutoring(Teacher teacher, Date date, String hour){
+        TeacherAppointment teacherAppointment = new TeacherAppointment(teacher, this);
+        teacherAppointment.register(date,hour);
         sessionsScheduled.add(new TeacherAppointment(teacher, this));
+    }
+
+    public ArrayList<TeacherAppointment> getSessionsScheduled() {
+        return sessionsScheduled;
     }
 }

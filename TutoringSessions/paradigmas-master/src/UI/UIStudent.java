@@ -4,6 +4,8 @@ import Model.Teacher;
 
 import java.util.Scanner;
 import static UI.UIMenu.*;
+import Model.TeacherAppointment;
+import java.util.ArrayList;
 
 public class UIStudent {
     public final static String [] MONTH = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"
@@ -72,6 +74,17 @@ public class UIStudent {
     }
 
     private static void getSessions(){
+        System.out.println();
+
+        ArrayList<TeacherAppointment> mySessions = studentLogged.getSessionsScheduled();
+        if(mySessions.isEmpty()){
+            System.out.println("No sessions scheduled");
+        }
+        int i = 0;
+        for(TeacherAppointment ta : mySessions){
+            System.out.println(i + "- " + ta);
+            i++;
+        }
         System.out.println();
     }
 
